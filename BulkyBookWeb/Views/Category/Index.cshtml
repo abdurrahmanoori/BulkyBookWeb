@@ -1,0 +1,43 @@
+﻿@model IEnumerable<BulkyBookWeb.Models.Category>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<h1>Index</h1>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Display Order
+            </th>
+            @*<th></th>*@
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.Name
+                </td>
+                <td>
+                    @item.DisplayOrder
+                </td>
+
+                @*<td>
+                        <a asp-action="Edit" class="btn btn-primary">Edit</a>
+                        <a asp-action="Edit" class="btn btn-primary"></a>
+                        <a asp-action="Edit" class="btn btn-primary">Edit</a>
+
+                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    </td>*@
+            </tr>
+        }
+    </tbody>
+</table>

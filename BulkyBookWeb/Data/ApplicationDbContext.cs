@@ -7,13 +7,27 @@ using System.Threading.Tasks;
 
 namespace BulkyBookWeb.Data
 {
-    public class ApplicationDbContext:DbContext
+    public class ApplicationDbContext : DbContext
     {
-        public ApplicationDbContext( DbContextOptions<ApplicationDbContext> options) : base(options)
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
         }
         public DbSet<Category> Categories { get; set; }
+
+        //protected override void OnModelCreating(ModelBuilder builder)
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<Category>().HasData(
+                new Category
+                {
+                    Id=10,
+                    Name = "Love",
+                    DisplayOrder = "This is display"
+                });
+        }
+
+
     }
 
-    
+
 }
