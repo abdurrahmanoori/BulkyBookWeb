@@ -12,7 +12,7 @@ namespace BulkyBookWeb.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
         }
-        public DbSet<Category> Categories { get; set; }
+        public DbSet<Category> Category { get; set; }
 
         //protected override void OnModelCreating(ModelBuilder builder)
         protected override void OnModelCreating(ModelBuilder builder)
