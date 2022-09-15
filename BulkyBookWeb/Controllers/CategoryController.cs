@@ -94,5 +94,43 @@ namespace BulkyBookWeb.Controllers
         }
 
 
+        //GET - DELETE
+        public IActionResult Delete(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            var categoryFromDbFirst = _db.Category.FirstOrDefault(u => u.Id == id);
+
+            if (categoryFromDbFirst == null)
+            {
+                return NotFound();
+            }
+
+            return View(categoryFromDbFirst);
+        }
+
+        //POST - DELETE
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeletePost(int? id)
+        {
+            var obj = _db.Category.FirstOrDefault(u => u.Id == id);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+
+            _db.Category.Remove(obj);
+            _db.SaveChanges();
+
+            TempData["success"] = "Category deleted successfully!";
+
+            return RedirectToAction("Index");
+        }
+
+
+
     }
 }
