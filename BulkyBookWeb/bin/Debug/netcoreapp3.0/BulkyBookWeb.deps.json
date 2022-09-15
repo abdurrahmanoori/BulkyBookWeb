@@ -24,6 +24,7 @@
     ".NETCoreApp,Version=v3.0": {
       "BulkyBookWeb/1.0.0": {
         "dependencies": {
+          "BulkyBook.DataAccess": "1.0.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "3.0.0",
           "Microsoft.EntityFrameworkCore.Tools": "3.0.0",
           "Microsoft.Extensions.Logging.Debug": "3.0.0",
@@ -2008,6 +2009,26 @@
       "toastr/2.1.1": {
         "dependencies": {
           "jQuery": "1.6.3"
+        }
+      },
+      "BulkyBook.DataAccess/1.0.0": {
+        "dependencies": {
+          "BulkyBook.Models": "1.0.0",
+          "Microsoft.EntityFrameworkCore.SqlServer": "3.0.0"
+        },
+        "runtime": {
+          "BulkyBook.DataAccess.dll": {}
+        },
+        "compile": {
+          "BulkyBook.DataAccess.dll": {}
+        }
+      },
+      "BulkyBook.Models/1.0.0": {
+        "runtime": {
+          "BulkyBook.Models.dll": {}
+        },
+        "compile": {
+          "BulkyBook.Models.dll": {}
         }
       },
       "Microsoft.AspNetCore.Antiforgery/3.0.0.0": {
@@ -4787,6 +4808,16 @@
       "sha512": "sha512-h/688XvzYk1xVYn213ryU+HCElE4n/drYzAHJkAi9LsSUPS3EbI6wGlvCglBUt7i4h5iESgAVarYaigjQmVpqg==",
       "path": "toastr/2.1.1",
       "hashPath": "toastr.2.1.1.nupkg.sha512"
+    },
+    "BulkyBook.DataAccess/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "BulkyBook.Models/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "Microsoft.AspNetCore.Antiforgery/3.0.0.0": {
       "type": "referenceassembly",
