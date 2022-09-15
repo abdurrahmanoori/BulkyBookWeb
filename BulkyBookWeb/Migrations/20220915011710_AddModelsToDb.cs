@@ -3,12 +3,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BulkyBookWeb.Migrations
 {
-    public partial class AddCategoryToDb : Migration
+    public partial class AddModelsToDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Categories",
+                name: "Category",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -19,14 +19,19 @@ namespace BulkyBookWeb.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Categories", x => x.Id);
+                    table.PrimaryKey("PK_Category", x => x.Id);
                 });
+
+            migrationBuilder.InsertData(
+                table: "Category",
+                columns: new[] { "Id", "CreatedDate", "DisplayOrder", "Name" },
+                values: new object[] { 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "This is display", "Love" });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Categories");
+                name: "Category");
         }
     }
 }

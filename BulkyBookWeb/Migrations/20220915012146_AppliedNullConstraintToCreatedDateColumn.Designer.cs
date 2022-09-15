@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BulkyBookWeb.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220914091950_AddCategoryToDb")]
-    partial class AddCategoryToDb
+    [Migration("20220915012146_AppliedNullConstraintToCreatedDateColumn")]
+    partial class AppliedNullConstraintToCreatedDateColumn
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,7 +28,7 @@ namespace BulkyBookWeb.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("CreatedDate")
+                    b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("DisplayOrder")
@@ -40,7 +40,15 @@ namespace BulkyBookWeb.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Category");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            DisplayOrder = "This is display",
+                            Name = "Love"
+                        });
                 });
 #pragma warning restore 612, 618
         }

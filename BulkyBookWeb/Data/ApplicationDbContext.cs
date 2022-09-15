@@ -20,7 +20,7 @@ namespace BulkyBookWeb.Data
             builder.Entity<Category>().HasData(
                 new Category
                 {
-                    Id=10,
+                    Id=1,
                     Name = "Love",
                     DisplayOrder = "This is display"
                 });

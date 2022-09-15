@@ -31,22 +31,68 @@ namespace BulkyBookWeb.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(Category obj)
         {
-            if (obj.Name == obj.DisplayOrder.ToString() || obj.Name==null)
+            if (obj.Name != null && obj.DisplayOrder != null)
+            {
+                if (obj.Name == obj.DisplayOrder.ToString())
+                {
+                    ModelState.AddModelError("CustomError", "The Display Order cannot exactly match the Name");
+                }
+
+                if (ModelState.IsValid)
+                {
+
+                    _db.Category.Add(obj);
+                    _db.SaveChanges();
+                    TempData["success"] = "Category created successfully!";
+                    return RedirectToAction("Index", "Category");
+                }
+            }
+            return View(obj);
+        }
+
+
+        //GET - EDIT
+        public IActionResult Edit(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            var categoryFromDb = _db.Category.Find(id);
+            //var categoryFromDbFirst = _db.Category.FirstOrDefault(u => u.Id == id);
+            //var categoryFromDbFirst = _db.Category.GetFirstOrDefault(u => u.Id == id); Not Work
+            //var categoryFromDbThird = _db.Categories.SingleOrDefault(u => u.Id == id);
+
+            if (categoryFromDb == null)
+            {
+                return NotFound();
+            }
+
+            return View(categoryFromDb);
+        }
+
+        //POST - EDIT
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(Category obj)
+        {
+            if (obj.Name == obj.DisplayOrder.ToString())
             {
                 ModelState.AddModelError("CustomError", "The Display Order cannot exactly match the Name");
             }
-
             if (ModelState.IsValid)
             {
-                
-                _db.Category.Add(obj);
+                _db.Category.Update(obj);
                 _db.SaveChanges();
-                TempData["success"] = "Category created successfully!";
+
+                TempData["success"] = "Category updated successfully!";
+
                 return RedirectToAction("Index", "Category");
             }
 
             return View(obj);
         }
+
 
     }
 }

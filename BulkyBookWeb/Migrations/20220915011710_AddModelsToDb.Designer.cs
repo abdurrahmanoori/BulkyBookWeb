@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BulkyBookWeb.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220914094248_SeedCategory")]
-    partial class SeedCategory
+    [Migration("20220915011710_AddModelsToDb")]
+    partial class AddModelsToDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -40,12 +40,12 @@ namespace BulkyBookWeb.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Category");
 
                     b.HasData(
                         new
                         {
-                            Id = 10,
+                            Id = 1,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DisplayOrder = "This is display",
                             Name = "Love"

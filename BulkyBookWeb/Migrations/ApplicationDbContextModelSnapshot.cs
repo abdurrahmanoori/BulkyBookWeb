@@ -26,7 +26,7 @@ namespace BulkyBookWeb.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("CreatedDate")
+                    b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("DisplayOrder")
@@ -43,8 +43,7 @@ namespace BulkyBookWeb.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 10,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 1,
                             DisplayOrder = "This is display",
                             Name = "Love"
                         });
