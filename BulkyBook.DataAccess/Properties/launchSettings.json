@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "BulkyBook.DataAccess": {
+      "commandName": "Project",
+      "nativeDebugging": false
+    }
+  }
+}

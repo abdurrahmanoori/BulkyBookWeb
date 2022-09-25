@@ -29,6 +29,7 @@ namespace BulkyBookWeb
         {
             services.AddDbContext<ApplicationDbContext>(options =>
         options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
             services.AddControllersWithViews();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             //services.AddScoped<IRepository<TModel>, TRepository>();
