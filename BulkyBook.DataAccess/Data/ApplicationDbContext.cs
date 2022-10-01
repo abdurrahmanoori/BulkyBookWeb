@@ -14,6 +14,7 @@ namespace BulkyBookWeb.Data
         }
         public DbSet<Category> Category { get; set; }
         public DbSet<CoverType> CoverTypes { get; set; }
+        public DbSet<Product> Products { get; set; }
 
 
         //protected override void OnModelCreating(ModelBuilder builder

@@ -38,9 +38,9 @@
       "frameworks": {
         "netcoreapp3.0": {
           "dependencies": {
-            "Microsoft.AspNetCore.Mvc.Core": {
+            "Microsoft.AspNet.Mvc": {
               "target": "Package",
-              "version": "[2.2.5, )"
+              "version": "[5.2.9, )"
             }
           },
           "imports": [

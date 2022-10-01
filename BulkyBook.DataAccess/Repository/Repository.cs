@@ -14,6 +14,7 @@ namespace BulkyBook.DataAccess.Repository
         private readonly ApplicationDbContext _db;
         internal DbSet<T> dbSet;
 
+
         public Repository(ApplicationDbContext db)
         {
             _db = db;
@@ -21,11 +22,13 @@ namespace BulkyBook.DataAccess.Repository
             //this is for ApplicationDbContext when we use
             //_db.Products.Include(u => u.Category).Inluce(u=>u.CoverType);
             this.dbSet = _db.Set<T>();
+            
         }
         public void Add(T entity)
-        {
+        {  
             //_db.Category == dbSet
             dbSet.Add(entity);
+           
         }
 
         //includeProp - "Category,CoverType"
