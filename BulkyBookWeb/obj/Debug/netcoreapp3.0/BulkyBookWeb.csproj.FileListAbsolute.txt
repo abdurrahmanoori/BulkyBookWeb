@@ -141,3 +141,11 @@ C:\Users\Abdurrahman\source\repos\BulkyBookWeb\BulkyBookWeb\obj\Debug\netcoreapp
 C:\Users\Abdurrahman\source\repos\BulkyBookWeb\BulkyBookWeb\obj\Debug\netcoreapp3.0\Razor\Areas\Admin\Views\CoverType\Edit.cshtml.g.cs
 C:\Users\Abdurrahman\source\repos\BulkyBookWeb\BulkyBookWeb\obj\Debug\netcoreapp3.0\Razor\Areas\Admin\Views\CoverType\Index.cshtml.g.cs
 C:\Users\Abdurrahman\source\repos\BulkyBookWeb\BulkyBookWeb\obj\Debug\netcoreapp3.0\Razor\Areas\Admin\Views\Product\Index.cshtml.g.cs
+C:\Users\Abdurrahman\source\repos\BulkyBookWeb\BulkyBookWeb\bin\Debug\netcoreapp3.0\System.Web.Mvc.dll
+C:\Users\Abdurrahman\source\repos\BulkyBookWeb\BulkyBookWeb\bin\Debug\netcoreapp3.0\System.Web.Razor.dll
+C:\Users\Abdurrahman\source\repos\BulkyBookWeb\BulkyBookWeb\bin\Debug\netcoreapp3.0\System.Web.Helpers.dll
+C:\Users\Abdurrahman\source\repos\BulkyBookWeb\BulkyBookWeb\bin\Debug\netcoreapp3.0\System.Web.WebPages.Deployment.dll
+C:\Users\Abdurrahman\source\repos\BulkyBookWeb\BulkyBookWeb\bin\Debug\netcoreapp3.0\System.Web.WebPages.Razor.dll
+C:\Users\Abdurrahman\source\repos\BulkyBookWeb\BulkyBookWeb\bin\Debug\netcoreapp3.0\System.Web.WebPages.dll
+C:\Users\Abdurrahman\source\repos\BulkyBookWeb\BulkyBookWeb\bin\Debug\netcoreapp3.0\Microsoft.Web.Infrastructure.dll
+C:\Users\Abdurrahman\source\repos\BulkyBookWeb\BulkyBookWeb\obj\Debug\netcoreapp3.0\Razor\Areas\Admin\Views\Product\Upsert.cshtml.g.cs

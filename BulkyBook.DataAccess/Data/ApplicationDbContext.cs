@@ -20,13 +20,13 @@ namespace BulkyBookWeb.Data
         //protected override void OnModelCreating(ModelBuilder builder
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<Category>().HasData(
-                new Category
-                {
-                    Id=1,
-                    Name = "Love",
-                    DisplayOrder = "This is display"
-                });
+            //builder.Entity<Category>().HasData(
+            //    new Category
+            //    {
+            //        Id=1,
+            //        Name = "Love",
+            //        DisplayOrder = "This is display"
+            //    });
         }
 
 
