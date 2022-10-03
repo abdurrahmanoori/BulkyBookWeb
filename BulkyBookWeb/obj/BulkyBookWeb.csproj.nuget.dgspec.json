@@ -180,6 +180,10 @@
               "target": "Package",
               "version": "[3.0.0, )"
             },
+            "SweetAlert": {
+              "target": "Package",
+              "version": "[1.0.0, )"
+            },
             "toastr": {
               "target": "Package",
               "version": "[2.1.1, )"

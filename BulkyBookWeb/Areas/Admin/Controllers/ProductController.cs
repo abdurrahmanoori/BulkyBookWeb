@@ -32,6 +32,7 @@ namespace BulkyBook.Areas.Admin.Controllers
             return View();
         }
 
+
         //UPSERT - GET
         public IActionResult Upsert(int? id)
         {
@@ -123,10 +124,9 @@ namespace BulkyBook.Areas.Admin.Controllers
 
         }
         //UPSERT - POST
-
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Upsert(ProductVM obj, IFormFile? file)
+        public IActionResult Upsert(Product obj, IFormFile? file)
         {
             if (ModelState.IsValid)
             {
@@ -137,10 +137,10 @@ namespace BulkyBook.Areas.Admin.Controllers
                     var uploads = Path.Combine(wwwRootPath, @"images\products");
                     var extension = Path.GetExtension(file.FileName);
 
-                    if (obj.Product.ImageUrl != null)
+                    if (obj.ImageUrl != null)
                     {
                         //LOGIC ABOUT DELETING OLD IMAGE
-                        var oldImagePath = Path.Combine(wwwRootPath, obj.Product.ImageUrl.TrimStart('\\'));
+                        var oldImagePath = Path.Combine(wwwRootPath, obj.ImageUrl.TrimStart('\\'));
                         if (System.IO.File.Exists(oldImagePath))
                         {
                             System.IO.File.Delete(oldImagePath);
@@ -151,25 +151,25 @@ namespace BulkyBook.Areas.Admin.Controllers
                     {
                         file.CopyTo(fileStreams);
                     }
-                    obj.Product.ImageUrl = @"\images\products\" + fileName + extension;
+                    obj.ImageUrl = @"\images\products\" + fileName + extension;
                 }
 
-                if (obj.Product.Id == 0)
+                if (obj.Id == 0)
                 {
-                    _unitOfWork.Product.Add(obj.Product);
+                    _unitOfWork.Product.Add(obj);
                     _unitOfWork.Save();
                     TempData["success"] = "Product created successfully";
                 }
                 else
                 {
-                    _unitOfWork.Product.Update(obj.Product);
+                    _unitOfWork.Product.Update(obj);
                     _unitOfWork.Save();
                     TempData["success"] = "Product updated successfully";
                 }
 
                 return RedirectToAction("Index");
             }
-            return View();
+            return View(obj);
         }
 
 
