@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using BulkyBook.Models;
+using BulkyBook.DataAccess.Repository.IRepository;
 
 namespace BulkyBookWeb.Controllers
 {
@@ -13,15 +14,34 @@ namespace BulkyBookWeb.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly IUnitOfWork _unitOfWork;
+        public HomeController(ILogger<HomeController> logger, IUnitOfWork unitOfWork)
         {
             _logger = logger;
+            _unitOfWork = unitOfWork;
         }
         public IActionResult Index()
         {
+            IEnumerable<Product> productList = _unitOfWork.Product.GetAll(includeProperties: "Category,CoverType");
+            return View(productList);
+        }
+
+
+        public IActionResult Details(int productId)
+        {
+            //ShoppingCart cartObj = new ()
+            //{
+            //    Count = 1,
+            //    ProductId = productId,
+            //    Product = _unitOfWork.Product.GetFirstOrDefault(u => u.Id == productId, includeProperties: "Category,CoverType"),
+            //};
+
+            //return View(cartObj);
             return View();
-        } 
+        }
+
+
+
         public IActionResult Privacy()
         {
             return View();

@@ -28,7 +28,6 @@ namespace BulkyBook.Areas.Admin.Controllers
         //INDEX - GET
         public IActionResult Index()
         {
-
             return View();
         }
 
