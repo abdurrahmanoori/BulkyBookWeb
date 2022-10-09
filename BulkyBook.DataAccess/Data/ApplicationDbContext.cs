@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BulkyBookWeb.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : DbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
@@ -16,6 +16,8 @@ namespace BulkyBookWeb.Data
         public DbSet<Category> Category { get; set; }
         public DbSet<CoverType> CoverTypes { get; set; }
         public DbSet<Product> Products { get; set; }
+
+        public DbSet<ShoppingCart> ShoppingCarts { get; set; }
 
 
         //protected override void OnModelCreating(ModelBuilder builder
