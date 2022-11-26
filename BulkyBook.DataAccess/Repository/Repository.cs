@@ -21,6 +21,7 @@ namespace BulkyBook.DataAccess.Repository
             //_db.ShoppingCarts.AsNoTracking()
             //this is for ApplicationDbContext when we use
             //_db.Products.Include(u => u.Category).Inluce(u=>u.CoverType);
+            
             this.dbSet = _db.Set<T>();
         }
         public void Add(T entity)

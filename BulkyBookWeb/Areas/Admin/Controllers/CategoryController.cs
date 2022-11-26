@@ -44,10 +44,9 @@ namespace BulkyBookWeb.Controllers
 
                 if (ModelState.IsValid)
                 {
-
                     _unitOfWork.Category.Add(obj);
                     _unitOfWork.Save();
-                    TempData["success"] = "Category created successfully!";
+                    ViewData["success"] = "Category created successfully!";
                     return RedirectToAction("Index", "Category");
                 }
             }
@@ -68,7 +67,7 @@ namespace BulkyBookWeb.Controllers
             //var categoryFromDbFirst = _db.Category.GetFirstOrDefault(u => u.Id == id); Not Work
             //var categoryFromDbThird = _db.Categories.SingleOrDefault(u => u.Id == id);
 
-            if (categoryFromDbFirst== null)
+            if (categoryFromDbFirst == null)
             {
                 return NotFound();
             }
@@ -90,7 +89,7 @@ namespace BulkyBookWeb.Controllers
                 _unitOfWork.Category.Update(obj);
                 _unitOfWork.Save();
 
-                TempData["success"] = "Category updated successfully!";
+                ViewData["success"] = "Category updated successfully!";
 
                 return RedirectToAction("Index", "Category");
             }

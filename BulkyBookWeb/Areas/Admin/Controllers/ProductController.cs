@@ -51,7 +51,7 @@ namespace BulkyBook.Areas.Admin.Controllers
             });
 
             //return View(_unitOfWork.Product.GetFirstOrDefault(u => u.Id == id));
-            
+
             if (id == null || id == 0)
             {
                 //CREATE
@@ -63,7 +63,7 @@ namespace BulkyBook.Areas.Admin.Controllers
             else
             {
                 //UPDATE
-                return View(_unitOfWork.Product.GetFirstOrDefault(u =>u.Id == id));
+                return View(_unitOfWork.Product.GetFirstOrDefault(u => u.Id == id));
             }
 
             //ProductVM productVM = new ProductVM()
