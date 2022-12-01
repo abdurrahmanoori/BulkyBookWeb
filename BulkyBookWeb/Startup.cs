@@ -32,6 +32,14 @@ namespace BulkyBookWeb
 
             services.AddControllersWithViews();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = "/Identity/Account/Login";  //in your case /Account/Login
+                options.LogoutPath = "/Identity/Account/logout";
+                options.AccessDeniedPath = "/Visitor/Error/AccessDenied";// In case of access denied.
+            });
+
             //services.AddScoped<IRepository<TModel>, TRepository>();
 
             //services.AddScoped<ICategoryRepository, ICategoryRepository>();

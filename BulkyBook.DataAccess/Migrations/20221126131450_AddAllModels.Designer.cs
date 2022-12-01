@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace BulkyBookWeb.Migrations
+namespace BulkyBook.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221126130217_test")]
-    partial class test
+    [Migration("20221126131450_AddAllModels")]
+    partial class AddAllModels
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
