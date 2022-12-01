@@ -197,3 +197,4 @@ C:\Users\Abdurrahman\source\repos\BulkyBookWeb\BulkyBookWeb\obj\Debug\netcoreapp
 C:\Users\Abdurrahman\source\repos\BulkyBookWeb\BulkyBookWeb\obj\Debug\netcoreapp3.0\BulkyBookWeb.csproj.CopyComplete
 C:\Users\Abdurrahman\source\repos\BulkyBookWeb\BulkyBookWeb\obj\Debug\netcoreapp3.0\BulkyBookWeb.dll
 C:\Users\Abdurrahman\source\repos\BulkyBookWeb\BulkyBookWeb\obj\Debug\netcoreapp3.0\BulkyBookWeb.pdb
+C:\Users\Abdurrahman\source\repos\BulkyBookWeb\BulkyBookWeb\obj\Debug\netcoreapp3.0\Razor\Areas\Customer\Views\Cart\Index.cshtml.g.cs
