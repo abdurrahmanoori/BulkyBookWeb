@@ -188,7 +188,6 @@ C:\Users\Abdurrahman\source\repos\BulkyBookWeb\BulkyBookWeb\obj\Debug\netcoreapp
 C:\Users\Abdurrahman\source\repos\BulkyBookWeb\BulkyBookWeb\obj\Debug\netcoreapp3.0\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.cshtml.g.cs
 C:\Users\Abdurrahman\source\repos\BulkyBookWeb\BulkyBookWeb\obj\Debug\netcoreapp3.0\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
 C:\Users\Abdurrahman\source\repos\BulkyBookWeb\BulkyBookWeb\obj\Debug\netcoreapp3.0\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
-C:\Users\Abdurrahman\source\repos\BulkyBookWeb\BulkyBookWeb\obj\Debug\netcoreapp3.0\Razor\Pages1\Pages3\Index.cshtml.g.cs
 C:\Users\Abdurrahman\source\repos\BulkyBookWeb\BulkyBookWeb\obj\Debug\netcoreapp3.0\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\Abdurrahman\source\repos\BulkyBookWeb\BulkyBookWeb\obj\Debug\netcoreapp3.0\Razor\Views\Shared\_CookieConsentPartial.cshtml.g.cs
 C:\Users\Abdurrahman\source\repos\BulkyBookWeb\BulkyBookWeb\obj\Debug\netcoreapp3.0\Razor\Views\Shared\_Layout.cshtml.g.cs

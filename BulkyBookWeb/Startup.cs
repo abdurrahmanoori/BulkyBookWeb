@@ -28,36 +28,43 @@ namespace BulkyBookWeb
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // services.AddRazorPages();
-
+           
             services.AddDbContext<ApplicationDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddControllersWithViews();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-            services.AddIdentity<IdentityUser, IdentityRole>().AddDefaultTokenProviders()
-                .AddDefaultUI()
-             .AddEntityFrameworkStores<ApplicationDbContext>();
-            /* If you are using Identity framework using Scafholding,
-             * chain (add) AddDefaultUI() methode. 
-             */
+            //
 
+            services.AddDefaultIdentity<IdentityUser>().AddDefaultUI()
+                .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            //
+            services.Configure<IdentityOptions>(option =>//Override indentity default password ruls.
+            {
+                option.Password.RequireDigit = false;
+                option.Password.RequiredLength = 1;
+                option.Password.RequireLowercase = false;
+                option.Password.RequireNonAlphanumeric = false;
+                option.Password.RequireUppercase = false;
+            });
+
+            // If you are using Identity framework using Scafholding, chain (add) AddDefaultUI() methode. 
+
+            //services.AddIdentity<IdentityUser, IdentityRole>().AddDefaultTokenProviders()
+            //    .AddDefaultUI()
+            // .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            //Enable mvc project to run Razor Pages.
             services.AddRazorPages();
 
-            //services.ConfigureApplicationCookie(options =>
-            //{
-            //    options.LoginPath = $"/Identity/Pages/Account/Login";  //in your case /Account/Login
-            //    options.LogoutPath = $"/Identity/Account/Logout";
-            //    options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
-            //});
-
             services.ConfigureApplicationCookie(options =>
-            {
-                options.LoginPath = "/Identity/Account/Login";  //in your case /Account/Login
-                options.LogoutPath = "/Identity/Account/logout";
-                options.AccessDeniedPath = "/Visitor/Error/AccessDenied";// In case of access denied.
-            });
+    {
+        options.LoginPath = "/Identity/Account/Login";  //in your case /Account/Login
+        options.LogoutPath = "/Identity/Account/logout";
+        options.AccessDeniedPath = "/Visitor/Error/AccessDenied";// In case of access denied.
+    });
 
 
             //services.AddScoped<IRepository<TModel>, TRepository>();
@@ -87,30 +94,12 @@ namespace BulkyBookWeb
 
             app.UseAuthorization();
 
-
-            // app.MapRazorPages();
-
-            //app.MapControllerRoute(
-            //    name: "default",
-            //    pattern: "{area=Customer}/{controller=Home}/{action=Index}/{id?}");
-
             app.UseEndpoints(endpoints =>
             {
-
-
-                //endpoints.MapControllers();
-
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{Area=Customer}/{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
-
-
-                //app.UseEndpoints(endpoint =>
-                //{
-                //    endpoint.MapRazorPages();
-                //});
-
             });
         }
     }
