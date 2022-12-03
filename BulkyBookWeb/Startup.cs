@@ -4,11 +4,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using BulkyBook.DataAccess.Repository;
 using BulkyBook.DataAccess.Repository.IRepository;
+using BulkyBook.Utility;
 using BulkyBookWeb.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -28,19 +32,24 @@ namespace BulkyBookWeb
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-           
+
             services.AddDbContext<ApplicationDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddControllersWithViews();
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            // Email authentication service
+            services.AddSingleton<IEmailSender, EmailSender>();
 
+            //services.AddDefaultIdentity<IdentityUser>().AddDefaultUI().AddEntityFrameworkStores<ApplicationDbContext>();
             //
 
-            services.AddDefaultIdentity<IdentityUser>().AddDefaultUI()
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+            //services.AddMvc(Configuration =>  //Apply Authorize attribute globaly.
+            //{
+            //    var policy = new AuthorizationPolicyBuilder()
+            //        .RequireAuthenticatedUser()
+            //        .Build();
+            //    Configuration.Filters.Add(new AuthorizeFilter(policy));
+            //});
 
-            //
             services.Configure<IdentityOptions>(option =>//Override indentity default password ruls.
             {
                 option.Password.RequireDigit = false;
@@ -48,23 +57,29 @@ namespace BulkyBookWeb
                 option.Password.RequireLowercase = false;
                 option.Password.RequireNonAlphanumeric = false;
                 option.Password.RequireUppercase = false;
+
             });
 
-            // If you are using Identity framework using Scafholding, chain (add) AddDefaultUI() methode. 
+            // If you are using Identity framework using Scafholding, chain (add) AddDefaultUI() methode
+            //If you don't want to Implement.
+            services.AddIdentity<IdentityUser, IdentityRole>().AddDefaultTokenProviders()
+             //.AddDefaultUI()
+             .AddEntityFrameworkStores<ApplicationDbContext>();
 
-            //services.AddIdentity<IdentityUser, IdentityRole>().AddDefaultTokenProviders()
-            //    .AddDefaultUI()
-            // .AddEntityFrameworkStores<ApplicationDbContext>();
+
+
+            services.AddControllersWithViews();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             //Enable mvc project to run Razor Pages.
             services.AddRazorPages();
 
             services.ConfigureApplicationCookie(options =>
-    {
-        options.LoginPath = "/Identity/Account/Login";  //in your case /Account/Login
-        options.LogoutPath = "/Identity/Account/logout";
-        options.AccessDeniedPath = "/Visitor/Error/AccessDenied";// In case of access denied.
-    });
+                {
+                    options.LoginPath = "/Identity/Account/Login";  //in your case /Account/Login
+                    options.LogoutPath = "/Identity/Account/logout";
+                    options.AccessDeniedPath = "/Visitor/Error/AccessDenied";// In case of access denied.
+                });
 
 
             //services.AddScoped<IRepository<TModel>, TRepository>();
@@ -90,9 +105,9 @@ namespace BulkyBookWeb
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
-            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

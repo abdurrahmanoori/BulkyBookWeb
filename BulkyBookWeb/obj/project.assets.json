@@ -2711,12 +2711,18 @@
       "BulkyBook.Utility/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.0",
+        "dependencies": {
+          "Microsoft.AspNetCore.Identity.UI": "3.0.0"
+        },
         "compile": {
           "bin/placeholder/BulkyBook.Utility.dll": {}
         },
         "runtime": {
           "bin/placeholder/BulkyBook.Utility.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       }
     }
   },
