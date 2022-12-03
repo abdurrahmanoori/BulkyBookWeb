@@ -154,7 +154,11 @@
         },
         "frameworks": {
           "netcoreapp3.0": {
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\Abdurrahman\\source\\repos\\BulkyBookWeb\\BulkyBook.Models\\BulkyBook.Models.csproj": {
+                "projectPath": "C:\\Users\\Abdurrahman\\source\\repos\\BulkyBookWeb\\BulkyBook.Models\\BulkyBook.Models.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
