@@ -16,6 +16,8 @@ namespace BulkyBook.DataAccess.Repository.IRepository
         IApplicationRepository ApplicationRepository { get;  }
 
         IShoppingCartRepository ShoppingCart { get; }
+
+        ICompanyRepository Company { get; }
         
         void Save();
         

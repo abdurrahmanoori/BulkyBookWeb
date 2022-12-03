@@ -23,6 +23,8 @@ namespace BulkyBookWeb.Data
         public DbSet<ShoppingCart> ShoppingCarts { get; set; }
 
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+
+        public DbSet<Company> Companies { get;set; }
         
         protected override void OnModelCreating(ModelBuilder builder)
         {
