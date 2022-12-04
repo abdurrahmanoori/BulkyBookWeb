@@ -36,7 +36,7 @@ namespace BulkyBookWeb
             services.AddDbContext<ApplicationDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            // Email authentication service
+            // Email authentication service. fake implementaion in order to get ride of exception.
             services.AddSingleton<IEmailSender, EmailSender>();
 
             //services.AddDefaultIdentity<IdentityUser>().AddDefaultUI().AddEntityFrameworkStores<ApplicationDbContext>();

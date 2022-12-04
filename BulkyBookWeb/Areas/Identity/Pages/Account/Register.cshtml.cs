@@ -5,13 +5,16 @@ using System.Linq;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
+using BulkyBook.DataAccess.Repository.IRepository;
 using BulkyBook.Utility;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 
@@ -25,14 +28,16 @@ namespace BulkyBookWeb.Areas.Identity.Pages.Account
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
         private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly IUnitOfWork _unitOfWork;
 
         public RegisterModel(
             UserManager<IdentityUser> userManager,
             SignInManager<IdentityUser> signInManager,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender,
-            RoleManager<IdentityRole> roleManager
-            
+            RoleManager<IdentityRole> roleManager,
+            IUnitOfWork unitOfWork
+
             )
         {
             _userManager = userManager;
@@ -40,6 +45,7 @@ namespace BulkyBookWeb.Areas.Identity.Pages.Account
             _logger = logger;
             _emailSender = emailSender;
             _roleManager = roleManager;
+            _unitOfWork = unitOfWork;
         }
 
         [BindProperty]
@@ -66,12 +72,53 @@ namespace BulkyBookWeb.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+
+            
+            [Required]
+            public string Name { get; set; }
+            public string? StreetAddress { get; set; }
+            public string? City { get; set; }
+            public string? State { get; set; }
+            public string? PostalCode { get; set; }
+            public string? PhoneNumber { get; set; }
+            public string? Role { get; set; }
+            public int? CompanyId { get; set; }
+
+            [ValidateNever]
+            public IEnumerable<SelectListItem> RoleList { get; set; }
+            [ValidateNever]
+            public IEnumerable<SelectListItem> CompanyList { get; set; }
         }
 
         public async Task OnGetAsync(string returnUrl = null)
         {
+
+            //If Admin role is not exist, it will create admin and all other user as
+            // anyone Register for the first time to the application.
+            if (!_roleManager.RoleExistsAsync(SD.Role_Admin).GetAwaiter().GetResult())
+            {
+                await _roleManager.CreateAsync(new IdentityRole(SD.Role_Admin));
+                await _roleManager.CreateAsync(new IdentityRole(SD.Role_Employee));
+                await _roleManager.CreateAsync(new IdentityRole(SD.Role_User_Comp));
+                await _roleManager.CreateAsync(new IdentityRole(SD.Role_User_Indi));
+            }
+
             ReturnUrl = returnUrl;
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+
+            Input = new InputModel()
+            {
+                RoleList = _roleManager.Roles.Select(x => x.Name).Select(i => new SelectListItem
+                {
+                    Text = i,
+                    Value = i
+                }),
+                CompanyList = _unitOfWork.Company.GetAll().Select(i => new SelectListItem
+                {
+                    Text = i.Name,
+                    Value = i.Id.ToString()
+                })
+            };
         }
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
@@ -80,48 +127,33 @@ namespace BulkyBookWeb.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser { UserName = Input.Email, Email = Input.Email };
+                var user = CreateUser();
+                user.StreetAddress = Input.StreetAddress;
+                user.City = Input.City;
+                user.State = Input.State;
+                user.PostalCode = Input.PostalCode;
+                user.Name = Input.Name;
+                user.PhoneNumber = Input.PhoneNumber;
+
+                if (Input.Role == SD.Role_User_Comp)
+                {
+                    user.CompanyId = Input.CompanyId;
+                }
+
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
-                    //await _signInManager.SignInAsync(user, false);
-                    //return LocalRedirect(returnUrl);
-                    
-                    //if (_signInManager.IsSignedIn(User))
-                    //{
-                    //    return RedirectToAction("ListUsers", "Administration");
-                    //}
-                    //await _signInManager.SignInAsync(user, isPersistent: false);
-                    //return RedirectToAction("Index", "Home");
-
-
-
-
-
-
-
-
 
                     _logger.LogInformation("User created a new account with password.");
 
-                    if (!await _roleManager.RoleExistsAsync(SD.Role_Admin)) ;
+                    if (Input.Role == null)
                     {
-                        await _roleManager.CreateAsync(new IdentityRole(SD.Role_Admin));
+                        await _userManager.AddToRoleAsync(user, SD.Role_User_Indi);
                     }
-                    if (!await _roleManager.RoleExistsAsync(SD.Role_Employee)) ;
+                    else
                     {
-                        await _roleManager.CreateAsync(new IdentityRole(SD.Role_Employee));
+                        await _userManager.AddToRoleAsync(user, Input.Role);
                     }
-                    if (!await _roleManager.RoleExistsAsync(SD.Role_User_Comp)) ;
-                    {
-                        await _roleManager.CreateAsync(new IdentityRole(SD.Role_User_Comp));
-                    }
-                    if (!await _roleManager.RoleExistsAsync(SD.Role_User_Indi)) ;
-                    {
-                        await _roleManager.CreateAsync(new IdentityRole(SD.Role_User_Indi));
-                    }
-
-                    await _userManager.AddToRoleAsync(user, SD.Role_Admin);
 
 
                     //var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
@@ -154,6 +186,20 @@ namespace BulkyBookWeb.Areas.Identity.Pages.Account
 
             // If we got this far, something failed, redisplay form
             return Page();
+        }
+
+        private ApplicationUser CreateUser( )
+        {
+            try
+            {
+                return Activator.CreateInstance<ApplicationUser>();
+            }
+            catch
+            {
+                throw new InvalidOperationException($"Can't create an instance of '{nameof(IdentityUser)}'. " +
+                    $"Ensure that '{nameof(IdentityUser)}' is not an abstract class and has a parameterless constructor, or alternatively " +
+                    $"override the register page in /Areas/Identity/Pages/Account/Register.cshtml");
+            }
         }
     }
 }
