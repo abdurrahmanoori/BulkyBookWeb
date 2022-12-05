@@ -134,6 +134,8 @@ C:\Users\Abdurrahman\source\repos\BulkyBookWeb\BulkyBookWeb\obj\Debug\netcoreapp
 C:\Users\Abdurrahman\source\repos\BulkyBookWeb\BulkyBookWeb\obj\Debug\netcoreapp3.0\Razor\Areas\Admin\Views\Category\Delete.cshtml.g.cs
 C:\Users\Abdurrahman\source\repos\BulkyBookWeb\BulkyBookWeb\obj\Debug\netcoreapp3.0\Razor\Areas\Admin\Views\Category\Edit.cshtml.g.cs
 C:\Users\Abdurrahman\source\repos\BulkyBookWeb\BulkyBookWeb\obj\Debug\netcoreapp3.0\Razor\Areas\Admin\Views\Category\Index.cshtml.g.cs
+C:\Users\Abdurrahman\source\repos\BulkyBookWeb\BulkyBookWeb\obj\Debug\netcoreapp3.0\Razor\Areas\Admin\Views\Company\Index.cshtml.g.cs
+C:\Users\Abdurrahman\source\repos\BulkyBookWeb\BulkyBookWeb\obj\Debug\netcoreapp3.0\Razor\Areas\Admin\Views\Company\Upsert.cshtml.g.cs
 C:\Users\Abdurrahman\source\repos\BulkyBookWeb\BulkyBookWeb\obj\Debug\netcoreapp3.0\Razor\Areas\Admin\Views\CoverType\Create.cshtml.g.cs
 C:\Users\Abdurrahman\source\repos\BulkyBookWeb\BulkyBookWeb\obj\Debug\netcoreapp3.0\Razor\Areas\Admin\Views\CoverType\Delete.cshtml.g.cs
 C:\Users\Abdurrahman\source\repos\BulkyBookWeb\BulkyBookWeb\obj\Debug\netcoreapp3.0\Razor\Areas\Admin\Views\CoverType\Edit.cshtml.g.cs
@@ -201,5 +203,3 @@ C:\Users\Abdurrahman\source\repos\BulkyBookWeb\BulkyBookWeb\obj\Debug\netcoreapp
 C:\Users\Abdurrahman\source\repos\BulkyBookWeb\BulkyBookWeb\obj\Debug\netcoreapp3.0\BulkyBookWeb.csproj.CopyComplete
 C:\Users\Abdurrahman\source\repos\BulkyBookWeb\BulkyBookWeb\obj\Debug\netcoreapp3.0\BulkyBookWeb.dll
 C:\Users\Abdurrahman\source\repos\BulkyBookWeb\BulkyBookWeb\obj\Debug\netcoreapp3.0\BulkyBookWeb.pdb
-C:\Users\Abdurrahman\source\repos\BulkyBookWeb\BulkyBookWeb\obj\Debug\netcoreapp3.0\Razor\Areas\Admin\Views\Company\Index.cshtml.g.cs
-C:\Users\Abdurrahman\source\repos\BulkyBookWeb\BulkyBookWeb\obj\Debug\netcoreapp3.0\Razor\Areas\Admin\Views\Company\Upsert.cshtml.g.cs

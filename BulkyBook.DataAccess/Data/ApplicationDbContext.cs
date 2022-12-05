@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BulkyBookWeb.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
@@ -29,7 +29,7 @@ namespace BulkyBookWeb.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder); /*
-            Error: The entity type 'IdentityUserLogin<string>' requires a primary key to be defined.
+            Error: The entity type 'ApplicationUserLogin<string>' requires a primary key to be defined.
             If you intended to use a keyless entity type call 'HasNoKey()'.
              
              */

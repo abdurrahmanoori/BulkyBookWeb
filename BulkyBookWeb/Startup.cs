@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BulkyBook.DataAccess.Repository;
 using BulkyBook.DataAccess.Repository.IRepository;
+using BulkyBook.Models;
 using BulkyBook.Utility;
 using BulkyBookWeb.Data;
 using Microsoft.AspNetCore.Authorization;
@@ -39,7 +40,13 @@ namespace BulkyBookWeb
             // Email authentication service. fake implementaion in order to get ride of exception.
             services.AddSingleton<IEmailSender, EmailSender>();
 
-            //services.AddDefaultIdentity<IdentityUser>().AddDefaultUI().AddEntityFrameworkStores<ApplicationDbContext>();
+          //  services.AddDefaultIdentity<ApplicationUser>();
+
+
+
+
+
+            //services.AddDefaultIdentity<ApplicationUser>().AddDefaultUI().AddEntityFrameworkStores<ApplicationDbContext>();
             //
 
             //services.AddMvc(Configuration =>  //Apply Authorize attribute globaly.
@@ -62,9 +69,12 @@ namespace BulkyBookWeb
 
             // If you are using Identity framework using Scafholding, chain (add) AddDefaultUI() methode
             //If you don't want to Implement.
-            services.AddIdentity<IdentityUser, IdentityRole>().AddDefaultTokenProviders()
+            services.AddIdentity<ApplicationUser, IdentityRole>().AddDefaultTokenProviders()
+                
              //.AddDefaultUI()
              .AddEntityFrameworkStores<ApplicationDbContext>();
+
+           // services.AddIdentity<ApplicationUser,ApplicationUser>()
 
 
 

@@ -2,7 +2,7 @@
 
 namespace BulkyBook.DataAccess.Migrations
 {
-    public partial class extendIdentityUser : Migration
+    public partial class extendApplicationUser : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

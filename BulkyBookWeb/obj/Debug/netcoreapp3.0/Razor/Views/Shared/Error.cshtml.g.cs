@@ -27,7 +27,7 @@ using BulkyBook.Models;
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7574e15c84afb9d24f236d64e4bbab903cb15412", @"/Views/Shared/Error.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"ca3af81dd220f1a3558b44def8116b45acb33b72", @"/Views/Shared/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"87b5fb54f77887de136f9a98fb524149176d6a61", @"/Views/Shared/_ViewImports.cshtml")]
     public class Views_Shared_Error : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<BulkyBook.Models.ErrorViewModel>
     {
         #pragma warning disable 1998
