@@ -69,7 +69,7 @@ namespace BulkyBookWeb.Controllers
             // count modified. so, added the new number of item.
             else
             {
-                _unitOfWork.ShoppingCart.IncreamentCount(cartFromDb, shoppingCart.Count);
+                _unitOfWork.ShoppingCart.IncrementCount(cartFromDb, shoppingCart.Count);
                 _unitOfWork.Save();
             }
 
