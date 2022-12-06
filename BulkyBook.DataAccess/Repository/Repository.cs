@@ -32,7 +32,7 @@ namespace BulkyBook.DataAccess.Repository
         public IEnumerable<T> GetAll(Expression<Func<T, bool>>? filter = null, string? includeProperties = null)
         {
             IQueryable<T> query = dbSet;
-            if (filter != null)
+            if (filter != null)// If requested records are based on a condation, then this block will execute.
             {
                 query = query.Where(filter);
             }
@@ -53,7 +53,6 @@ namespace BulkyBook.DataAccess.Repository
             if (tracked)
             {
                 query = dbSet;
-
                 //this us comment
             }
             else
@@ -71,6 +70,7 @@ namespace BulkyBook.DataAccess.Repository
             }
 
             return query.FirstOrDefault();
+        
         }
 
         public void Remove(T entity)

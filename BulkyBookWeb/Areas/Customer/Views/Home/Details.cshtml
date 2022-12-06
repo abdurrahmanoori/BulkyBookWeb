@@ -1,6 +1,6 @@
 ﻿@model BulkyBook.Models.ShoppingCart
 
-<form method="post" action="Details" enctype="multipart/form-data">
+<form method="post" asp-area="Customer" asp-controller="Home" asp-action="Details" enctype="multipart/form-data">
     <input hidden asp-for="ProductId" />
     <div class="card  container pt-4">
         <div class="card-header bg-primary text-light ml-0  row ">
@@ -72,7 +72,7 @@
                     <a class="btn btn-success form-control " style="height:50px;" asp-action="Index">Back to Home</a>
                 </div>
                 <div class="col-12 col-md-6 pb-1">
-                    <button type="submit" value="Add to Cart" class="btn btn-primary form-control" style="height:50px;">Add to Cart</button>
+                    <input type="submit" value="Add to Cart" class="btn btn-primary form-control" style="height:50px;">Add to Cart</input>
                 </div>
             </div>
         </div>

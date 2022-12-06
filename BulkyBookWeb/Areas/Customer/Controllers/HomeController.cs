@@ -24,7 +24,7 @@ namespace BulkyBookWeb.Controllers
             _logger = logger;
             _unitOfWork = unitOfWork;
         }
-        public IActionResult Index()
+        public IActionResult Index( )
         {
             IEnumerable<Product> productList = _unitOfWork.Product.GetAll(includeProperties: "Category,CoverType");
             return View(productList);
@@ -32,7 +32,7 @@ namespace BulkyBookWeb.Controllers
 
         public IActionResult Details(int productId)
         {
-            ShoppingCart cartObj =new ShoppingCart
+            ShoppingCart cartObj = new ShoppingCart
             {
                 Count = 1,
                 ProductId = productId,
@@ -41,8 +41,6 @@ namespace BulkyBookWeb.Controllers
 
             return View(cartObj);
         }
-        
-
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -53,19 +51,25 @@ namespace BulkyBookWeb.Controllers
             var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
             shoppingCart.ApplicationUserId = claim.Value;
 
+            //Get record based on condidation. Later we will use this record to determine whethear this record
+            //has been already added to shooping cart by user (or he/she may want to modify count of item)
+            //so we don't want a new insertion in ShoopingCart table.
             ShoppingCart cartFromDb = _unitOfWork.ShoppingCart.GetFirstOrDefault(
                 u => u.ApplicationUserId == claim.Value && u.ProductId == shoppingCart.ProductId);
 
-            if (cartFromDb == null)
+            if (cartFromDb == null)//this is added for the first time in shopingCart
             {
                 _unitOfWork.ShoppingCart.Add(shoppingCart);
                 _unitOfWork.Save();
-                HttpContext.Session.SetInt32(SD.SessionCart,
-                    _unitOfWork.ShoppingCart.GetAll(u => u.ApplicationUserId == claim.Value).ToList().Count);
+                //    HttpContext.Session.SetInt32(SD.SessionCart,
+                //        _unitOfWork.ShoppingCart.GetAll(u => u.ApplicationUserId == claim.Value).ToList().Count);
             }
+
+            // count modified. so, added the new number of item.
+            // count modified. so, added the new number of item.
             else
             {
-                //_unitOfWork.ShoppingCart.IncrementCount(cartFromDb, shoppingCart.Count);
+                _unitOfWork.ShoppingCart.IncreamentCount(cartFromDb, shoppingCart.Count);
                 _unitOfWork.Save();
             }
 
@@ -88,13 +92,13 @@ namespace BulkyBookWeb.Controllers
 
 
 
-        public IActionResult Privacy()
+        public IActionResult Privacy( )
         {
             return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public IActionResult Error( )
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }

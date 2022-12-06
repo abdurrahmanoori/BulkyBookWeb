@@ -69,8 +69,7 @@ namespace BulkyBookWeb
 
             // If you are using Identity framework using Scafholding, chain (add) AddDefaultUI() methode
             //If you don't want to Implement.
-            services.AddIdentity<ApplicationUser, IdentityRole>().AddDefaultTokenProviders()
-                
+            services.AddIdentity<ApplicationUser, IdentityRole>().AddDefaultTokenProviders()                
              //.AddDefaultUI()
              .AddEntityFrameworkStores<ApplicationDbContext>();
 
