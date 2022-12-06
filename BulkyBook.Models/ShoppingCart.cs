@@ -20,6 +20,9 @@ namespace BulkyBook.Models
         public string ApplicationUserId { get; set; }
 
         [ForeignKey("ApplicationUserId")]//public ApplicationUser ApplicationUser { get; set; }//[ValidateNever]
+
+        //This property is a place holder. Means in our business logic price will change based on number of item
+        //that is why define a new property (Price).
         [NotMapped]
         public double Price { get; set; }
     }
