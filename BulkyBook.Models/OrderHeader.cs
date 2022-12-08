@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -13,7 +14,7 @@ namespace BulkyBook.Models
         public string ApplicationUserId { get; set; }
 
         [ForeignKey("ApplicationUserId")]
-       // [ValidateNever]
+        [ValidateNever]
         public ApplicationUser ApplicationUser { get; set; }
         [Required]
         public DateTime OrderDate { get; set; }

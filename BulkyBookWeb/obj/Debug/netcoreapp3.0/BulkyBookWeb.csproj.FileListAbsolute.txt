@@ -118,6 +118,8 @@ C:\Users\Abdurrahman\source\repos\BulkyBookWeb\BulkyBookWeb\bin\Debug\netcoreapp
 C:\Users\Abdurrahman\source\repos\BulkyBookWeb\BulkyBookWeb\bin\Debug\netcoreapp3.0\BulkyBook.Models.pdb
 C:\Users\Abdurrahman\source\repos\BulkyBookWeb\BulkyBookWeb\bin\Debug\netcoreapp3.0\BulkyBook.Utility.dll
 C:\Users\Abdurrahman\source\repos\BulkyBookWeb\BulkyBookWeb\bin\Debug\netcoreapp3.0\BulkyBook.Utility.pdb
+C:\Users\Abdurrahman\source\repos\BulkyBookWeb\BulkyBookWeb\bin\Debug\netcoreapp3.0\Microsoft.DotNet.PlatformAbstractions.dll
+C:\Users\Abdurrahman\source\repos\BulkyBookWeb\BulkyBookWeb\bin\Debug\netcoreapp3.0\Microsoft.Extensions.DependencyModel.dll
 C:\Users\Abdurrahman\source\repos\BulkyBookWeb\BulkyBookWeb\obj\Debug\netcoreapp3.0\BulkyBookWeb.csprojAssemblyReference.cache
 C:\Users\Abdurrahman\source\repos\BulkyBookWeb\BulkyBookWeb\obj\Debug\netcoreapp3.0\staticwebassets\BulkyBookWeb.StaticWebAssets.Manifest.cache
 C:\Users\Abdurrahman\source\repos\BulkyBookWeb\BulkyBookWeb\obj\Debug\netcoreapp3.0\staticwebassets\BulkyBookWeb.StaticWebAssets.xml
@@ -146,6 +148,7 @@ C:\Users\Abdurrahman\source\repos\BulkyBookWeb\BulkyBookWeb\obj\Debug\netcoreapp
 C:\Users\Abdurrahman\source\repos\BulkyBookWeb\BulkyBookWeb\obj\Debug\netcoreapp3.0\Razor\Areas\Admin\Views\_ViewStart.cshtml.g.cs
 C:\Users\Abdurrahman\source\repos\BulkyBookWeb\BulkyBookWeb\obj\Debug\netcoreapp3.0\Razor\Areas\Customer\Index.cshtml.g.cs
 C:\Users\Abdurrahman\source\repos\BulkyBookWeb\BulkyBookWeb\obj\Debug\netcoreapp3.0\Razor\Areas\Customer\Views\Cart\Index.cshtml.g.cs
+C:\Users\Abdurrahman\source\repos\BulkyBookWeb\BulkyBookWeb\obj\Debug\netcoreapp3.0\Razor\Areas\Customer\Views\Cart\Summary.cshtml.g.cs
 C:\Users\Abdurrahman\source\repos\BulkyBookWeb\BulkyBookWeb\obj\Debug\netcoreapp3.0\Razor\Areas\Customer\Views\Home\Details.cshtml.g.cs
 C:\Users\Abdurrahman\source\repos\BulkyBookWeb\BulkyBookWeb\obj\Debug\netcoreapp3.0\Razor\Areas\Customer\Views\Home\Index.cshtml.g.cs
 C:\Users\Abdurrahman\source\repos\BulkyBookWeb\BulkyBookWeb\obj\Debug\netcoreapp3.0\Razor\Areas\Customer\Views\Home\Privacy.cshtml.g.cs
@@ -203,4 +206,3 @@ C:\Users\Abdurrahman\source\repos\BulkyBookWeb\BulkyBookWeb\obj\Debug\netcoreapp
 C:\Users\Abdurrahman\source\repos\BulkyBookWeb\BulkyBookWeb\obj\Debug\netcoreapp3.0\BulkyBookWeb.csproj.CopyComplete
 C:\Users\Abdurrahman\source\repos\BulkyBookWeb\BulkyBookWeb\obj\Debug\netcoreapp3.0\BulkyBookWeb.dll
 C:\Users\Abdurrahman\source\repos\BulkyBookWeb\BulkyBookWeb\obj\Debug\netcoreapp3.0\BulkyBookWeb.pdb
-C:\Users\Abdurrahman\source\repos\BulkyBookWeb\BulkyBookWeb\obj\Debug\netcoreapp3.0\Razor\Areas\Customer\Views\Cart\Summary.cshtml.g.cs

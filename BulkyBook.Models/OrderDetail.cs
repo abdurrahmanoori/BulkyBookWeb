@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -12,12 +13,12 @@ namespace BulkyBook.Models
         [Required]
         public int OrderId { get; set; }
         [ForeignKey("OrderId")]
-        //[ValidateNever]
+        [ValidateNever]
         public OrderHeader OrderHeader { get; set; }
         [Required]
         public int ProductId { get; set; }
         [ForeignKey("ProductId")]
-       // [ValidateNever]
+        [ValidateNever]
         public Product Product { get; set; }
         public int Count { get; set; }
         public double Price { get; set; }
