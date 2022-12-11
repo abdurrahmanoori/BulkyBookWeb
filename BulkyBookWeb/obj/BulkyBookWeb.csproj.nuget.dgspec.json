@@ -264,6 +264,10 @@
               "target": "Package",
               "version": "[3.0.0, )"
             },
+            "Stripe.net": {
+              "target": "Package",
+              "version": "[41.2.0, )"
+            },
             "SweetAlert": {
               "target": "Package",
               "version": "[1.0.0, )"

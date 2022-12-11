@@ -18,6 +18,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Stripe;
 
 namespace BulkyBookWeb
 {
@@ -33,6 +34,10 @@ namespace BulkyBookWeb
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            //Map or bind secrect and public key from appSetting.json file to StripeSettings class property
+            //Note: name of the keys in appSettings.json and class's property must be same in order to map.
+            services.Configure<StripeSettings>(Configuration.GetSection("Stripe"));
 
             services.AddDbContext<ApplicationDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
@@ -113,6 +118,9 @@ namespace BulkyBookWeb
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            //Assing global api key inside pipeline
+            StripeConfiguration.ApiKey = Configuration.GetSection("Stripe:SecretKey").Get<string>();
 
             app.UseAuthentication();
             app.UseAuthorization();
