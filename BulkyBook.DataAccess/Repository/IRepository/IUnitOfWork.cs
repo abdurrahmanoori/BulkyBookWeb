@@ -20,9 +20,9 @@ namespace BulkyBook.DataAccess.Repository.IRepository
 
         ICompanyRepository Company { get; }
 
-        IOrderDetailRepository OrderDetailRepository { get; }
+        IOrderDetailRepository OrderDetail { get; }
 
-        IOrderHeaderRepository OrderHeaderRepository { get; }
+        IOrderHeaderRepository OrderHeader { get; }
         
         void Save();
         

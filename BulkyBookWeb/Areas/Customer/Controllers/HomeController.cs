@@ -24,6 +24,7 @@ namespace BulkyBookWeb.Controllers
             _logger = logger;
             _unitOfWork = unitOfWork;
         }
+
         public IActionResult Index( )
         {
             IEnumerable<Product> productList = _unitOfWork.Product.GetAll(includeProperties: "Category,CoverType");
@@ -66,7 +67,6 @@ namespace BulkyBookWeb.Controllers
             }
 
             // count modified. so, added the new number of item.
-            // count modified. so, added the new number of item.
             else
             {
                 _unitOfWork.ShoppingCart.IncrementCount(cartFromDb, shoppingCart.Count);
@@ -75,21 +75,6 @@ namespace BulkyBookWeb.Controllers
 
             return RedirectToAction(nameof(Index));
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         public IActionResult Privacy( )
